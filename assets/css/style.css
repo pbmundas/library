@@ -34,7 +34,7 @@ body {
 }
 
 .sidebar .logo img {
-  width: 80px;
+  width: 100px;
   height: auto;
 }
 
@@ -42,7 +42,7 @@ body {
   font-size: 1.2rem;
   font-weight: bold;
   color: #ffc107; /* Yellow accent */
-  margin-top: 10px;
+  margin-top: 5px;
 }
 
 .sidebar .search {
