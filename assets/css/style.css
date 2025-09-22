@@ -92,11 +92,14 @@ body {
   color: #007bff;
 }
 
-/* Main content area */
+/* Main content area: Centered layout */
 main {
-  margin-left: 270px;
+  margin-left: 270px; /* Offset for sidebar */
   padding: 40px 20px;
-  max-width: 800px;
+  max-width: 800px; /* Readable width, centered */
+  margin-right: auto; /* Center the content */
+  margin-left: auto; /* Center the content */
+  width: 100%; /* Ensure full width calculation */
 }
 
 /* Headings */
@@ -106,6 +109,7 @@ h1 {
   color: #222222;
   margin-bottom: 20px;
   text-transform: uppercase;
+  text-align: center; /* Center heading for consistency */
 }
 
 h2 {
@@ -114,13 +118,14 @@ h2 {
   color: #444444;
   margin-top: 40px;
   margin-bottom: 15px;
+  text-align: center; /* Center subheadings */
 }
 
-/* Tables */
+/* Tables: Centered with full width */
 table {
   width: 100%;
   border-collapse: collapse;
-  margin: 20px 0;
+  margin: 20px auto; /* Center the table */
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   background-color: #ffffff;
 }
@@ -152,17 +157,19 @@ a:hover {
   color: #0056b3;
 }
 
-/* Feedback section */
+/* Feedback section: Centered */
 .feedback {
   background-color: #f0f0f0;
   padding: 15px;
   border-left: 4px solid #007bff;
-  margin-bottom: 20px;
+  margin: 20px auto; /* Center with margin */
+  max-width: 600px; /* Slightly narrower for focus */
   font-style: italic;
   color: #555555;
+  text-align: center; /* Center text */
 }
 
-/* Footer */
+/* Footer: Centered */
 footer {
   margin-top: 40px;
   text-align: center;
@@ -170,7 +177,7 @@ footer {
   font-size: 0.8rem;
 }
 
-/* Responsive */
+/* Responsive: Adjust layout on mobile */
 @media (max-width: 768px) {
   .sidebar {
     position: relative;
@@ -182,5 +189,12 @@ footer {
   main {
     margin-left: 0;
     padding: 20px 10px;
+    max-width: 100%; /* Full width on mobile */
+  }
+  h1, h2 {
+    text-align: left; /* Left-align on mobile for readability */
+  }
+  .feedback {
+    max-width: 100%; /* Full width on mobile */
   }
 }
