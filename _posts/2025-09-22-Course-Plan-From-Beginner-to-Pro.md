@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Course Plan: From Beginner to Pro
+title: Course Plan
 category: Threat Hunting  # This becomes a main topic in sidebar
 ---
 
