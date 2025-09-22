@@ -1,14 +1,24 @@
-<ul>
-  {% assign categories = site.posts | concat: site.docs | map: 'category' | uniq | sort %}
-  {% for category in categories %}
-    <li>
-      <strong>{{ category }}</strong>
-      <ul>
-        {% assign items_in_category = site.posts | concat: site.docs | where: "category", category %}
-        {% for item in items_in_category %}
-          <li><a href="{{ item.url }}">{{ item.title }}</a></li>
-        {% endfor %}
-      </ul>
-    </li>
-  {% endfor %}
-</ul>
+<nav class="sidebar">
+  <ul>
+    {% assign all_items = site.posts %}
+    {% if site.docs %}
+      {% assign all_items = all_items | concat: site.docs %}
+    {% endif %}
+    {% assign categories = all_items | map: 'category' | uniq | sort %}
+    {% for category in categories %}
+      <li>
+        <strong>{{ category }}</strong>
+        <ul>
+          {% assign items_in_category = site.posts | where: "category", category %}
+          {% if site.docs %}
+            {% assign docs_in_category = site.docs | where: "category", category %}
+            {% assign items_in_category = items_in_category | concat: docs_in_category %}
+          {% endif %}
+          {% for item in items_in_category %}
+            <li><a href="{{ item.url }}">{{ item.title }}</a></li>
+          {% endfor %}
+        </ul>
+      </li>
+    {% endfor %}
+  </ul>
+</nav>
