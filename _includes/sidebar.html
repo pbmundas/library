@@ -15,7 +15,7 @@
             {% assign items_in_category = items_in_category | concat: docs_in_category %}
           {% endif %}
           {% for item in items_in_category %}
-            <li><a href="{{ item.url }}">{{ item.title }}</a></li>
+            <li><a href="{{ site.baseurl }}{{ item.url }}">{{ item.title }}</a></li>
           {% endfor %}
         </ul>
       </li>
