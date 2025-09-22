@@ -1,9 +1,4 @@
 - title: Category1
   url: /category1/
-  subitems:
-    - title: Subtopic1
-      url: /category1/subtopic1/
-    - title: Subtopic2
-      url: /category1/subtopic2/
 - title: About
   url: /about/
