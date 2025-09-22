@@ -1,6 +1,6 @@
 <nav class="sidebar">
   <div class="logo">
-    <img src="{{ site.baseurl }}/assets/logo.png" alt="Logo">
+    <img src="{{ site.baseurl }}/assets/images/logo.png" alt="Logo">
     <div class="site-name">My Library</div>
   </div>
   <div class="search">
@@ -14,19 +14,15 @@
     {% assign categories = all_items | map: 'category' | uniq | sort %}
     {% for category in categories %}
       <li>
-        <strong><a href="{{ site.baseurl }}/{{ category | slugify | downcase }}/">{{ category }}</a></strong>
-        <ul>
-          {% assign subcategories = all_items | where: "category", category | map: 'subcategory' | uniq | sort %}
-          {% for subcat in subcategories %}
-            {% if subcat %}
-              <li><a href="{{ site.baseurl }}/{{ category | slugify | downcase }}/{{ subcat | slugify | downcase }}/">{{ subcat }}</a></li>
-            {% endif %}
-          {% endfor %}
-          {% assign items_in_category = all_items | where: "category", category %}
-          {% for item in items_in_category %}
-            <li><a href="{{ site.baseurl }}{{ item.url }}">{{ item.title }}</a></li>
-          {% endfor %}
-        </ul>
+        <details>
+          <summary><strong>{{ category }}</strong></summary>
+          <ul>
+            {% assign items_in_category = all_items | where: "category", category %}
+            {% for item in items_in_category %}
+              <li><a href="{{ site.baseurl }}{{ item.url }}">{{ item.title }}</a></li>
+            {% endfor %}
+          </ul>
+        </details>
       </li>
     {% endfor %}
     <li>
