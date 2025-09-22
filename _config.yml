@@ -11,6 +11,10 @@ collections:
   docs:  # Custom collection for documentation posts
     output: true
     permalink: /:collection/:path/
+include: ['_pages']  # If you have non-post pages
+collections:
+  pages:
+    output: true
 defaults:
   - scope:
       path: ""
@@ -22,3 +26,7 @@ defaults:
       type: posts
     values:
       layout: post
+  - scope:
+      path: ""
+    values:
+      layout: "default"
