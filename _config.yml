@@ -1,0 +1,24 @@
+title: Your Site Name  # e.g., PBMunds Docs
+description: Dynamic Documentation and Blog
+url: "https://pbmunds.github.io"
+logo: /assets/logo.png  # Path to your logo image (upload later)
+theme: minima
+plugins:
+  - jekyll-feed
+header_pages:  # Pages to show in top nav if needed
+  - about.md
+collections:
+  docs:  # Custom collection for documentation posts
+    output: true
+    permalink: /:collection/:path/
+defaults:
+  - scope:
+      path: ""
+      type: docs
+    values:
+      layout: doc
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
