@@ -1,5 +1,25 @@
 <nav class="sidebar">
+  <div class="logo">
+    <img src="{{ site.baseurl }}/assets/images/logo.png" alt="Logo"> <!-- Add your logo image here -->
+    <div class="site-name">My Library</div> <!-- Site name like target's -->
+  </div>
+  <div class="search">
+    <input type="text" placeholder="Search..."> <!-- Basic search; add JS or plugin for functionality -->
+  </div>
   <ul>
+    {% for item in site.data.navigation %}
+      <li>
+        <strong><a href="{{ site.baseurl }}{{ item.url }}">{{ item.title }}</a></strong>
+        {% if item.subitems %}
+          <ul>
+            {% for sub in item.subitems %}
+              <li><a href="{{ site.baseurl }}{{ sub.url }}">{{ sub.title }}</a></li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </li>
+    {% endfor %}
+    <!-- Keep your dynamic categories if needed -->
     {% assign all_items = site.posts %}
     {% if site.docs %}
       {% assign all_items = all_items | concat: site.docs %}
