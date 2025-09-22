@@ -134,6 +134,7 @@ th, td {
   padding: 12px;
   border: 1px solid #e0e0e0;
   text-align: left;
+  text-align: justify;
 }
 
 th {
@@ -196,5 +197,17 @@ footer {
   }
   .feedback {
     max-width: 100%; /* Full width on mobile */
+  }
+  p {
+  text-align: justify;
+  hyphens: auto; /* Optional: Improves justification by allowing hyphenation */
+  }
+  li {
+  text-align: justify; /* Optional for lists */
+  }
+  /* Optional mobile adjustment for justification */
+@media (max-width: 768px) {
+  p, li, td {
+    text-align: left; /* Revert to left on small screens */
   }
 }
