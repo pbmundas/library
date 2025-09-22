@@ -1,6 +1,7 @@
 title: Cybersecurity Library  # e.g., PBMunds Docs
 description: Dynamic Documentation and Blog
-url: "https://pbmunds.github.io/library"
+url: "https://pbmunds.github.io/"
+baseurl: "/library"
 logo: /assets/logo.png  # Path to your logo image (upload later)
 theme: minima
 plugins:
