@@ -198,10 +198,7 @@ footer {
   .feedback {
     max-width: 100%; /* Full width on mobile */
   }
-  p {
-  text-align: justify;
-  hyphens: auto; /* Optional: Improves justification by allowing hyphenation */
-  }
+  p { margin: 0; padding: 0; text-align: justify; }
   li {
   text-align: justify; /* Optional for lists */
   }
