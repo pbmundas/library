@@ -1,6 +1,9 @@
 title: My Threat Hunt Book
 description: A curated guide to threat hunting frameworks and cheat sheets
 theme: just-the-docs
+minima:
+  custom_css:
+    - /assets/css/custom.css
 url: https://YOUR_USERNAME.github.io
 baseurl: /my-threat-hunt-docs
 permalink: pretty
