@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{{ page.title | default: site.title }}</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/lunr/lunr.js"></script>  <!-- For search -->
+  <style>
+    body { font-family: Arial, sans-serif; }
+    .sidebar { position: fixed; top: 0; bottom: 0; left: 0; width: 250px; padding: 20px; background: #f8f9fa; overflow-y: auto; }
+    .content { margin-left: 250px; padding: 20px; }
+    .logo { width: 50px; height: auto; }
+    #search-input { width: 100%; margin-bottom: 10px; }
+  </style>
+</head>
+<body>
+  <div class="sidebar">
+    <img src="{{ site.logo }}" alt="Logo" class="logo">
+    <h2>{{ site.title }}</h2>
+    <input type="text" id="search-input" placeholder="Search...">
+    <ul id="search-results"></ul>
+    {% include sidebar.html %}
+  </div>
+  <div class="content">
+    {{ content }}
+  </div>
+  <script>
+    // Lunr search index setup (builds index from posts/docs)
+    var index = lunr(function () {
+      this.ref('url');
+      this.field('title');
+      this.field('content');
+      {% for post in site.posts %}
+        this.add({ url: '{{ post.url }}', title: '{{ post.title }}', content: '{{ post.content | strip_html }}' });
+      {% endfor %}
+      {% for doc in site.docs %}
+        this.add({ url: '{{ doc.url }}', title: '{{ doc.title }}', content: '{{ doc.content | strip_html }}' });
+      {% endfor %}
+    });
+    document.getElementById('search-input').addEventListener('input', function () {
+      var query = this.value;
+      var results = index.search(query);
+      var ul = document.getElementById('search-results');
+      ul.innerHTML = '';
+      results.forEach(function (result) {
+        var li = document.createElement('li');
+        li.innerHTML = '<a href="' + result.ref + '">' + result.ref + '</a>';
+        ul.appendChild(li);
+      });
+    });
+  </script>
+</body>
+</html>
