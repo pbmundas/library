@@ -1,0 +1,20 @@
+nav:
+  - title: Fundamentals
+    url: /library/fundamentals
+    children:
+      - title: 1 - Basics
+        url: /library/fundamentals/basics
+      - title: Hierarchy of Needs
+        url: /library/fundamentals/hierarchy-of-needs
+  - title: 2 - Frameworks
+    url: /library/frameworks
+    children:
+      - title: Diamond Model
+        url: /library/frameworks/diamond-model
+      - title: Lockheed Martin Killchain
+        url: /library/frameworks/lockheed-martin-killchain
+  - title: HTML Docs
+    url: /library/html-docs
+    children:
+      - title: Guide 1
+        url: /library/html-docs/guide1
