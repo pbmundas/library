@@ -4,23 +4,6 @@ title: Course Plan
 category: Threat Hunting  # This becomes a main topic in sidebar
 ---
 
-- **Structured Progression**: This course plan guides learners from foundational cybersecurity knowledge to advanced threat hunting skills, emphasizing hands-on practice and real-world application.
-- **Key Components**: Focus on methodologies like hypothesis-driven hunting, tools such as SIEM and EDR, and certifications for professional validation; it's designed to take 6-12 months depending on dedication.
-- **Resources and Tools**: Incorporates free and paid options, including updated 2025 courses from platforms like Udemy, SANS, and Google Cloud, with an emphasis on practical labs.
-- **Potential Challenges**: Threat hunting involves evolving threats, so continuous learning is essential; start with free resources to build confidence without high costs.
-- **Career Outlook**: Completing this can lead to roles like SOC analyst or threat hunter, with certifications boosting employability in a high-demand field.
-
-#### Getting Started
-Begin with basics in cybersecurity and networking to ensure a solid foundation. Allocate 1-2 months for beginner modules, using free platforms like TryHackMe or Codecademy for interactive learning. Practice in virtual labs to simulate real environments.
-
-#### Intermediate Skills
-Move to threat intelligence and hunting methodologies. Spend 2-3 months here, integrating tools like Splunk or Wireshark. Engage in simulated attacks to apply concepts practically.
-
-#### Advanced Proficiency
-Focus on forensics, automation, and enterprise-scale hunting for 3-4 months. Pursue certifications like OSTH from OffSec or GCFA from SANS to achieve pro-level expertise. Participate in community events for ongoing growth.
-
----
-
 This comprehensive guide expands on the threat hunting course plan, drawing from current 2025 resources and best practices. It builds a pathway from novice to expert, incorporating the latest training programs, certifications, and tools. The plan is exhaustive, covering theoretical knowledge, practical skills, and professional development. We've structured it into levels with modules, ensuring no critical areas are missed, such as AI integration in hunting or emerging threat actor analysis.
 
 The plan assumes part-time dedication (10-20 hours/week) and encourages building a personal lab using tools like VirtualBox. It emphasizes hypothesis-based hunting per MITRE ATT&CK, data-driven approaches, and ethical considerations. For exhaustiveness, we've included estimated times, updated resources from recent searches, and tips for customization based on learner background.
