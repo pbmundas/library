@@ -1,0 +1,14 @@
+<ul>
+  {% assign categories = site.posts | concat: site.docs | map: 'category' | uniq | sort %}
+  {% for category in categories %}
+    <li>
+      <strong>{{ category }}</strong>
+      <ul>
+        {% assign items_in_category = site.posts | concat: site.docs | where: "category", category %}
+        {% for item in items_in_category %}
+          <li><a href="{{ item.url }}">{{ item.title }}</a></li>
+        {% endfor %}
+      </ul>
+    </li>
+  {% endfor %}
+</ul>
