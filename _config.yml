@@ -1,0 +1,10 @@
+title: My Threat Hunt Library
+description: A curated guide to threat hunting frameworks and cheat sheets
+theme: just-the-docs
+url: https://pbmundas.github.io
+baseurl: /library
+permalink: pretty
+aux_links:
+  "threat hunt by predefender": https://huntbook.predefender.com
+heading_anchors: true
+search_enabled: true
