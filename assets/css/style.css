@@ -206,8 +206,5 @@ footer {
   text-align: justify; /* Optional for lists */
   }
   /* Optional mobile adjustment for justification */
-@media (max-width: 768px) {
-  p, li, td {
-    text-align: left; /* Revert to left on small screens */
-  }
+
 }
