@@ -96,7 +96,7 @@ body {
 main {
   margin-left: 270px; /* Offset for sidebar */
   padding: 40px 20px;
-  max-width: 1200px; /* Readable width, centered */
+  max-width: 200px; /* Readable width, centered */
   margin-right: auto; /* Center the content */
   margin-left: auto; /* Center the content */
   width: 100%; /* Ensure full width calculation */
