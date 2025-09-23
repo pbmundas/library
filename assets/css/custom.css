@@ -1,0 +1,67 @@
+/* General page styling */
+body {
+  background: #f4f4f4;
+  color: #333;
+}
+
+/* Table-specific styling */
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 10px; /* Vertical spacing between rows */
+  background: rgba(255, 255, 255, 0.9); /* Slight opacity for modern look */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  margin-bottom: 20px;
+}
+
+th, td {
+  padding: 12px 15px; /* Increased padding for breathing room */
+  text-align: left;
+  vertical-align: top;
+  border: 1px solid #ddd; /* Light border for separation */
+}
+
+th {
+  background: #007bff; /* Blue header like toggle button */
+  color: white;
+  font-size: 1.2em; /* Larger headers */
+  font-weight: bold;
+  text-transform: uppercase; /* Catchy capitalization */
+  letter-spacing: 1px; /* Slight spacing for style */
+}
+
+td {
+  font-size: 1em; /* Readable body text */
+  line-height: 1.6; /* Improved line spacing */
+  color: #444; /* Darker text for contrast */
+  opacity: 0.95; /* Slight opacity for modern feel */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  table {
+    border-spacing: 0 5px; /* Reduced spacing on mobile */
+    font-size: 0.9em; /* Slightly smaller for mobile fit */
+  }
+  th, td {
+    padding: 8px 10px; /* Reduced padding on mobile */
+  }
+}
+
+/* Highlight key terms */
+strong {
+  color: #dc3545; /* Red for emphasis (e.g., CIA triad, IoCs) */
+  font-weight: 600;
+}
+
+/* Ensure content fits with sidebar */
+.main-content {
+  margin-left: 0; /* Override if needed on mobile */
+  padding: 20px;
+}
+
+@media (min-width: 769px) {
+  .main-content {
+    margin-left: 300px; /* Align with fixed sidebar */
+  }
+}
