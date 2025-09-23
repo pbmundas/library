@@ -14,34 +14,22 @@
       padding: 0;
       background: #f4f4f4;
     }
-    .container-fluid {
-      display: flex;
-      min-height: 100vh;
-    }
-    .sidebar {
-      width: 300px; /* Matches your image's width */
+    .offcanvas {
       background: #333; /* Dark gray from your image */
       color: #fff;
-      padding: 20px;
-      overflow-y: auto;
-      transition: transform 0.3s ease;
-      position: fixed;
-      top: 0;
-      bottom: 0;
-      left: 0;
-      z-index: 1000;
+      width: 300px !important; /* Fixed width on desktop/mobile when shown */
     }
-    .sidebar .logo img {
+    .offcanvas .logo img {
       width: 80px; /* Adjust based on your logo size */
       height: auto;
       margin-bottom: 10px;
     }
-    .sidebar .site-name a {
+    .offcanvas .site-name a {
       color: #fff;
       text-decoration: none;
       font-size: 1.2em;
     }
-    .sidebar input[type="text"] {
+    .offcanvas input[type="text"] {
       width: 100%;
       margin-bottom: 10px;
       padding: 5px;
@@ -49,99 +37,118 @@
       border: 1px solid #555;
       color: #fff;
     }
-    .sidebar ul {
+    .offcanvas ul {
       list-style: none;
       padding: 0;
     }
-    .sidebar ul li a {
+    .offcanvas ul li a {
       color: #ddd;
       text-decoration: none;
     }
-    .sidebar ul li a:hover {
+    .offcanvas ul li a:hover {
       color: #fff;
     }
+    .offcanvas details summary {
+      cursor: pointer;
+    }
     .main-content {
-      margin-left: 300px; /* Matches sidebar width */
       padding: 20px;
-      flex-grow: 1;
-      width: calc(100% - 300px);
       transition: margin-left 0.3s ease;
     }
-    /* Mobile adjustments */
-    @media (max-width: 768px) {
-      .sidebar {
-        transform: translateX(-100%);
-        width: 250px; /* Slightly narrower on mobile */
-      }
-      .sidebar.active {
-        transform: translateX(0);
+    /* Desktop: Sidebar always visible, no offcanvas behavior */
+    @media (min-width: 769px) {
+      .offcanvas.offcanvas-start {
+        position: fixed !important;
+        top: 0;
+        bottom: 0;
+        z-index: 1045;
+        width: 300px !important;
+        visibility: visible !important;
+        background: #333;
+        transform: none !important;
+        border-right: 1px solid #dee2e6;
+        padding: 20px;
+        overflow-y: auto;
       }
       .main-content {
-        margin-left: 0;
-        width: 100%;
+        margin-left: 300px; /* Adjusts for always-visible sidebar */
+      }
+      .offcanvas-backdrop {
+        display: none !important; /* No overlay on desktop */
       }
       .sidebar-toggle {
-        display: block;
+        display: none !important; /* Hide toggle on desktop */
+      }
+    }
+    /* Mobile: Use Offcanvas for toggle */
+    @media (max-width: 768px) {
+      .main-content {
+        margin-left: 0; /* Full width on mobile */
+      }
+      .sidebar-toggle {
         position: fixed;
         top: 10px;
         left: 10px;
-        z-index: 1100;
+        z-index: 1050;
         background: #007bff; /* Blue button color */
         color: white;
         border: none;
-        padding: 5px 10px;
+        padding: 10px;
         border-radius: 5px;
         cursor: pointer;
-      }
-    }
-    @media (min-width: 769px) {
-      .sidebar-toggle {
-        display: none;
       }
     }
   </style>
 </head>
 <body>
-  <button class="sidebar-toggle" onclick="toggleSidebar()">☰</button>
-  <div class="container-fluid">
-    <nav class="sidebar" id="sidebar">
+  <button class="sidebar-toggle btn btn-primary d-none d-md-block d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebarOffcanvas" aria-controls="sidebarOffcanvas">☰</button>
+  <div class="offcanvas offcanvas-start" tabindex="-1" id="sidebarOffcanvas" aria-labelledby="sidebarOffcanvasLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="sidebarOffcanvasLabel">Library</h5>
+      <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
       {% include sidebar.html %}
-    </nav>
-    <div class="main-content">
-      {{ content }}
     </div>
   </div>
+  <div class="main-content">
+    {{ content }}
+  </div>
   <script>
-    function toggleSidebar() {
-      const sidebar = document.getElementById('sidebar');
-      sidebar.classList.toggle('active');
-    }
-    // Lunr search index
-    var index = lunr(function () {
-      this.ref('url');
-      this.field('title');
-      this.field('content');
-      {% for post in site.posts %}
-        this.add({ url: '{{ site.baseurl }}{{ post.url }}', title: '{{ post.title }}', content: '{{ post.content | strip_html }}' });
-      {% endfor %}
-      {% for doc in site.docs %}
-        this.add({ url: '{{ site.baseurl }}{{ doc.url }}', title: '{{ doc.title }}', content: '{{ doc.content | strip_html }}' });
-      {% endfor %}
-    });
-    document.querySelector('.sidebar input[type="text"]').addEventListener('input', function () {
-      var query = this.value;
-      var results = index.search(query);
-      var ul = document.createElement('ul');
-      ul.id = 'search-results';
-      ul.style.listStyle = 'none';
-      ul.style.padding = '0';
-      document.querySelector('.sidebar').appendChild(ul);
-      ul.innerHTML = '';
-      results.forEach(function (result) {
-        var li = document.createElement('li');
-        li.innerHTML = '<a href="' + result.ref + '">' + result.ref + '</a>';
-        ul.appendChild(li);
+    // Lunr search index (runs after DOM loads)
+    document.addEventListener('DOMContentLoaded', function() {
+      var index = lunr(function () {
+        this.ref('url');
+        this.field('title');
+        this.field('content');
+        {% for post in site.posts %}
+          this.add({ url: '{{ site.baseurl }}{{ post.url }}', title: '{{ post.title }}', content: '{{ post.content | strip_html }}' });
+        {% endfor %}
+        {% for doc in site.docs %}
+          this.add({ url: '{{ site.baseurl }}{{ doc.url }}', title: '{{ doc.title }}', content: '{{ doc.content | strip_html }}' });
+        {% endfor %}
       });
+      var searchInput = document.querySelector('.offcanvas input[type="text"]');
+      if (searchInput) {
+        searchInput.addEventListener('input', function () {
+          var query = this.value;
+          var results = index.search(query);
+          var ul = document.getElementById('search-results');
+          if (!ul) {
+            ul = document.createElement('ul');
+            ul.id = 'search-results';
+            ul.style.listStyle = 'none';
+            ul.style.padding = '0';
+            this.parentNode.appendChild(ul);
+          }
+          ul.innerHTML = '';
+          results.forEach(function (result) {
+            var li = document.createElement('li');
+            li.innerHTML = '<a href="' + result.ref + '">' + result.ref + '</a>';
+            ul.appendChild(li);
+          });
+        });
+      }
     });
   </script>
 </body>
