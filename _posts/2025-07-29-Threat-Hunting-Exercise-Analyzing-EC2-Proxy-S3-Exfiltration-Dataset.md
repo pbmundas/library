@@ -49,4 +49,4 @@ Parsed ~10+ visible events (full ~100 truncated). Early recon by "pedro" (MFA-en
 - **Detection**: GuardDuty rule for S3:GetObject from EC2 + CLI UA; Sigma for CloudTrail: `title: EC2 Proxy S3 Exfil` → `selection: eventSource='s3.amazonaws.com' eventName='GetObject' userIdentity.type='AssumedRole' additionalEventData.bytesTransferredOut > 0`.
 - **Pro Tip**: Baseline role sessions—external IP + no MFA = red. Chain to T1078.004 (role abuse). In your SOC, hunt CLI events from instances.
 
-Hypothesis **confirmed**—S3 data theft via EC2 proxy! Cloud logs are gold for this. Query for S3 bytesOut in your env? Module 9: Real AWS breach cases?
+Hypothesis **confirmed**—S3 data theft via EC2 proxy! Cloud logs are gold for this. 
