@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Starting with hunt
-category: Threat Hunting  # This becomes a main topic in sidebar
+category: Threat-Hunting  # This becomes a main topic in sidebar
 ---
 
 ### How I'd Teach You Threat Hunting
