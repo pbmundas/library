@@ -1,6 +1,6 @@
 ---
 layout: default
-title: For Beginners
+title: Course Plan
 category: Threat Hunting  # This becomes a main topic in sidebar
 ---
 Below is a deep dive into the **Beginner Modules** from the provided threat hunting curriculum table, focusing on the five beginner-level modules (1–5). I’ve expanded each module with detailed content, maintaining the markdown format as requested, and merged related information into a maximum of four columns for clarity and page fit. The content is enriched with in-depth explanations of key topics, learning objectives, tools/techniques, and resources, while keeping the structure consistent with the original table.
