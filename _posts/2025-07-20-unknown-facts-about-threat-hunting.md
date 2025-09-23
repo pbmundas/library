@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Uknown facts
-category: Threat Hunting  # This becomes a main topic in sidebar
+category: Threat-Hunting  # This becomes a main topic in sidebar
 ---
 
 Threat hunting is a proactive cybersecurity practice that involves searching for threats within an organization's network before they manifest into full-blown incidents. While many are familiar with the basics, there are lesser-known, realistic aspects of learning and mastering threat hunting that can provide deeper insight into the discipline. Below is a comprehensive list of unknown or less-discussed facts about learning threat hunting, grounded in realistic principles and practices:
