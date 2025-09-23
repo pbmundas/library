@@ -14,7 +14,7 @@ If you'd like to get in touch, here's how you can reach me:
 
 - **Email**: [prasanna.mundas@gmail.com]
 - **Phone**: [+91 9886120777]
-- **LinkedIn**: [https://www.linkedin.com/in/prasannamundas/)]
+- **LinkedIn**: [https://www.linkedin.com/in/prasannamundas/]
 - **Twitter**: [@mr_mundas]
 - **Website**: [https://pbmundas.github.io]
 
