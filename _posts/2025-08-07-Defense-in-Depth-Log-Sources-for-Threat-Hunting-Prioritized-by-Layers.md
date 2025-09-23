@@ -1,6 +1,6 @@
 ---
 layout: default
-title: DiD: Log Coverage
+title: DiD- Log Coverage
 category: Threat-Hunting  # This becomes a main topic in sidebar
 ---
 
