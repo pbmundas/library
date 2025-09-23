@@ -12,12 +12,12 @@ The CIA triad—**Confidentiality**, **Integrity**, and **Availability**—is th
 - **Integrity**: Ensures data remains accurate and unaltered. Example: Digital signatures prevent tampering with medical records.
 - **Availability**: Ensures data and systems are accessible when needed. Example: Backup servers maintain access during hardware failures.
 
-#### Breach Scenarios
+##### Breach Scenarios
 - **Confidentiality Breach**: A hacker exploits weak passwords to access a company's database, causing a data leak of customer credit card details, leading to identity theft and legal penalties.
 - **Integrity Breach**: Malware alters transaction logs in a banking system, changing deposit amounts, resulting in financial discrepancies and loss of trust.
 - **Availability Breach**: A DDoS attack overwhelms an online retailer's servers during Black Friday, blocking customer access and causing significant revenue loss.
 
-#### CIA Triad Diagram
+##### CIA Triad Diagram
 
 ```plaintext
 +---------------------+
@@ -48,14 +48,14 @@ The threat landscape encompasses diverse actors with distinct motives and method
 - **Nation-State Actors**: Backed by governments, these actors target strategic assets for espionage or disruption. Example: The 2020 SolarWinds attack, attributed to Russia, compromised U.S. agencies by injecting malware into software updates.
 - **Hacktivists**: Motivated by ideology, hacktivists disrupt systems to promote causes. Example: Anonymous’s 2016 DDoS attack on the Turkish government websites to protest censorship.
 
-#### Infographic Description
+##### Infographic Description
 The infographic illustrates the relationships between these threats and their targets:
 - **Cybercrime** targets financial institutions and businesses (e.g., banks, retailers) with arrows pointing to money symbols.
 - **Nation-State Actors** target government and critical infrastructure (e.g., defense, energy) with arrows to shield and power icons.
 - **Hacktivists** target organizations or governments opposing their causes (e.g., media, political sites) with arrows to megaphone symbols.
 - Central node labeled "Internet" connects all threats, showing their shared digital battleground.
 
-#### Threat Landscape Infographic
+##### Threat Landscape Infographic
 
 ```plaintext
        +-----------+
@@ -87,10 +87,10 @@ Recognizing common attack vectors is crucial for maintaining cybersecurity. Here
 - **Malware**: Malicious software designed to damage or gain unauthorized access. Example: Downloading a file attachment from an unverified email that installs ransomware, locking your files and demanding payment.
 - **Social Engineering**: Manipulating individuals to divulge confidential information. Example: A caller posing as IT support, convincing you to provide your password under the guise of troubleshooting.
 
-#### Flowchart for Phishing Attack
+##### Flowchart for Phishing Attack
 The flowchart below outlines the steps of a phishing attack, enhancing understanding of the process.
 
-#### Phishing Attack Flowchart
+##### Phishing Attack Flowchart
 
 ```plaintext
 [Start]
@@ -130,10 +130,10 @@ The process of managing cybersecurity risks involves three key steps: **identify
 - **Assessing Risks**: Evaluate the likelihood and impact of identified risks. A risk assessment might determine that malware could lead to data loss with a high probability due to unpatched systems.
 - **Mitigating Risks**: Implement controls to reduce risk severity. This could include patching systems, deploying antivirus software, and training employees to recognize phishing.
 
-#### Case Study: Mitigating a Malware Risk
+##### Case Study: Mitigating a Malware Risk
 A small business noticed slow network performance and frequent system crashes. Investigation identified a malware infection from a phishing email. The risk assessment rated it as "High" due to potential data theft and downtime. Mitigation involved isolating affected devices, updating antivirus definitions, patching vulnerabilities, and conducting staff training. Post-mitigation, the risk was reduced to "Low" with improved security measures.
 
-#### Risk Level Comparison Table
+##### Risk Level Comparison Table
 
 | Risk Factor            | Before Mitigation | After Mitigation |
 |-------------------------|-------------------|------------------|
@@ -148,7 +148,7 @@ A small business noticed slow network performance and frequent system crashes. I
 
 A basic incident response (IR) process is essential for managing cybersecurity incidents like a malware outbreak. Below is a step-by-step guide using a hypothetical malware outbreak scenario, followed by a timeline diagram to illustrate the sequence of actions.
 
-### Step-by-Step Guide for Incident Response
+#### Step-by-Step Guide for Incident Response
 
 - **Containment**:
   1. **Identify Affected Systems**: Detect infected devices (e.g., workstations showing unusual activity) using network monitoring tools like Wireshark.
@@ -165,13 +165,13 @@ A basic incident response (IR) process is essential for managing cybersecurity i
   8. **Test Operations**: Validate system functionality (e.g., test email and file access) to ensure normal operation.
   9. **Monitor and Report**: Continuously monitor for recurrence and document the incident (e.g., create a report for stakeholders) by 04:29 PM IST on Tuesday, September 23, 2025.
 
-#### Hypothetical Malware Outbreak Scenario
+##### Hypothetical Malware Outbreak Scenario
 A company detects a malware outbreak after employees report slow systems and encrypted files. The malware, likely ransomware, spread via a phishing email. The IR team follows the steps above, isolating 10 affected workstations, removing the malware with antivirus tools, patching unupdated software, and restoring data from backups taken last week.
 
 ---
 
 
-#### Incident Response Timeline
+##### Incident Response Timeline
 
 ```plaintext
 [00:00] Start: Malware Detected
