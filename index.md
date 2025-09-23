@@ -11,4 +11,6 @@ My journey spans leading teams, building threat detection frameworks, and delive
 
 I thrive on collaborating with cross-functional teams to bridge security gaps, develop actionable playbooks, and implement predictive threat intelligence. As a freelance consultant, I help clients in the financial, healthcare, and technology sectors identify risks, remediate vulnerabilities, and strengthen their security postures.
 
-Let’s connect if you’re looking for a trusted cybersecurity advisor to protect your organization from today’s evolving threats—or if you’d like to share insights on the latest in threat hunting and cyber defense!
+Let’s connect if you’re looking for a trusted cybersecurity advisor to protect your organization from today’s evolving threats—or if you’d like to share insights on the latest in threat hunting and cyber defense! 
+
+#### Don't forget to expand the categories in the sidebar to see the hidden gems :P
