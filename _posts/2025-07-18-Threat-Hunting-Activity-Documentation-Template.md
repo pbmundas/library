@@ -4,7 +4,7 @@ title: Documenting Hunt
 category: Threat Hunting  # This becomes a main topic in sidebar
 ---
 
-Threat-Hunting-Activity-Documentation-Template.md
+
 ### Threat Hunting Activity Documentation Template
 
 This document provides a comprehensive, industry-standard format for documenting threat hunting activities, synthesized from established frameworks and best practices such as the TaHiTI methodology, PEAK framework, MITRE ATT&CK-aligned playbooks, and practical reporting structures used by cybersecurity professionals. It ensures end-to-end coverage, from planning and execution to reporting and refinement, to promote repeatability, compliance, legal defensibility, and continuous improvement. Threat hunters should use this as a living document (e.g., in tools like Markdown, Word, or Notion) during and after each hunt, logging activities in real-time to capture successes, failures, and artifacts.
