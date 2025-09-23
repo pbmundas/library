@@ -20,10 +20,18 @@
       color: #fff;
       width: 300px !important;
     }
+    .offcanvas .logo {
+      text-align: center; /* Center the logo */
+      margin-bottom: 15px; /* Add space below logo */
+    }
     .offcanvas .logo img {
-      width: 80px;
+      width: 96px; /* Increase from 80px to 96px (80px * 1.2 = 96px) */
       height: auto;
-      margin-bottom: 10px;
+      margin: 0 auto; /* Center horizontally */
+    }
+    .offcanvas .site-name {
+      text-align: center; /* Center the site name */
+      margin-bottom: 20px; /* Space before search input */
     }
     .offcanvas .site-name a {
       color: #fff;
@@ -110,7 +118,7 @@
   <button class="btn-toggle btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebarOffcanvas" aria-controls="sidebarOffcanvas">☰</button>
   <div class="offcanvas offcanvas-start" tabindex="-1" id="sidebarOffcanvas" aria-labelledby="sidebarOffcanvasLabel">
     <div class="offcanvas-header">
-      <h5 class="offcanvas-title" id="sidebarOffcanvasLabel"></h5>
+      <h5 class="offcanvas-title" id="sidebarOffcanvasLabel">Library</h5>
       <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body">
