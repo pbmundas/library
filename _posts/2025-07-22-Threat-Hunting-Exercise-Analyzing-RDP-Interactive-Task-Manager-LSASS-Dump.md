@@ -4,7 +4,7 @@ title: Hunting Exercise - 1
 category: Threat Hunting  # This becomes a main topic in sidebar
 ---
 
-
+### Threat Hunting Exercise: Analyzing RDP Interactive Task-Manager LSASS Dump
 
 Hey, great—let's put Module 7 (Hypothesis-Driven Hunting) into action with this dataset! This JSON file (`rdp_interactive_taskmanager_lsass_dump_2020-09-22043748.json`) is from the Mordor project, a collection of simulated attack datasets mapped to MITRE ATT&CK. Based on the filename and tags (`mordorDataset`), we're dealing with **T1003.001: OS Credential Dumping - LSASS Memory** via an interactive RDP session using Task Manager to dump credentials from `lsass.exe`. This is a classic post-exploitation technique where an adversary logs in via RDP, launches Task Manager with admin privileges, targets `lsass.exe`, and creates a memory dump file for offline cracking.
 
