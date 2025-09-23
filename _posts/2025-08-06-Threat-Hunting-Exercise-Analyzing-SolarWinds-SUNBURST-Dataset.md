@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Solarwind SUNBURST
-category: Threat Hunting  # This becomes a main topic in sidebar
+category: Threat-Hunting  # This becomes a main topic in sidebar
 ---
 
 ### Next Steps: From Hypothesis to Capstone Hunt
