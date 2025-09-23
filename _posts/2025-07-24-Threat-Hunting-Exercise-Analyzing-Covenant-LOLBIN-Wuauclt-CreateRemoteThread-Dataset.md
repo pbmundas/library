@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Documenting Hunt
+title: Hunting Exercise - 3
 category: Threat Hunting  # This becomes a main topic in sidebar
 ---
 
