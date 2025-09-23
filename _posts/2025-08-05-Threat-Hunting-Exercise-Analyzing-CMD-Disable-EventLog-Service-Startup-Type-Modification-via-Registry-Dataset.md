@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Hunting Exercise - 15
-category: Threat Hunting  # This becomes a main topic in sidebar
+category: Threat-Hunting  # This becomes a main topic in sidebar
 ---
 
 ### Threat Hunting Exercise: Analyzing CMD Disable EventLog Service Startup Type Modification via Registry Dataset
