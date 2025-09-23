@@ -1,32 +1,30 @@
-<nav class="sidebar">
-  <div class="logo">
-    <a href="{{ site.baseurl }}/"><img src="{{ site.baseurl }}/assets/logo.png" alt="Logo"></a>
-    <div class="site-name"><a href="{{ site.baseurl }}/">Library</a></div>
-  </div>
-  <div class="search">
-    <input type="text" id="search-input" placeholder="Search...">
-  </div>
-  <ul>
-    {% assign all_items = site.posts %}
-    {% if site.docs %}
-      {% assign all_items = all_items | concat: site.docs %}
-    {% endif %}
-    {% assign categories = all_items | map: 'category' | uniq | sort %}
-    {% for category in categories %}
-      <li>
-        <details>
-          <summary><strong>{{ category }}</strong></summary>
-          <ul>
-            {% assign items_in_category = all_items | where: "category", category | sort: 'date' %}
-            {% for item in items_in_category %}
-              <li><a href="{{ site.baseurl }}{{ item.url }}">{{ item.title }}</a></li>
-            {% endfor %}
-          </ul>
-        </details>
-      </li>
-    {% endfor %}
-    <li>
-      <strong><a href="{{ site.baseurl }}/about/">About</a></strong>
-    </li>
-  </ul>
-</nav>
+<div class="logo">
+  <a href="{{ site.baseurl }}/"><img src="{{ site.baseurl }}/assets/logo.png" alt="Logo"></a>
+  <div class="site-name"><a href="{{ site.baseurl }}/">Library</a></div>
+</div>
+<div class="search">
+  <input type="text" id="search-input" placeholder="Search...">
+</div>
+<ul style="margin: 0; padding: 0;">
+  {% assign all_items = site.posts %}
+  {% if site.docs %}
+    {% assign all_items = all_items | concat: site.docs %}
+  {% endif %}
+  {% assign categories = all_items | map: 'category' | uniq | sort %}
+  {% for category in categories %}
+    <li style="margin: 0; padding: 0;">
+      <details style="margin: 0; padding: 0;">
+        <summary><strong>{{ category }}</strong></summary>
+        <div style="margin: 0; padding: 0;">
+          {% assign items_in_category = all_items | where: "category", category | sort: 'date' %}
+          {% for item in items_in_category %}
+            <a href="{{ site.baseurl }}{{ item.url }}" style="display: block; color: #ddd; text-decoration: none; padding: 2px 0; margin: 0;">{{ item.title }}</a>
+          {% endfor %}
+        </div>
+      </details>
+        </li>
+  {% endfor %}
+  <li style="margin: 0; padding: 0;">
+    <strong><a href="{{ site.baseurl }}/about/" style="display: block; color: #ddd; text-decoration: none; padding: 2px 0; margin: 0;">About</a></strong>
+  </li>
+</ul>
