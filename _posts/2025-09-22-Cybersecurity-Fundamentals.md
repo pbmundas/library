@@ -129,3 +129,67 @@ A small business noticed slow network performance and frequent system crashes. I
 | Impact on Operations    | High (Data Loss)  | Low (Minimal)    |
 | Overall Risk Level      | High              | Low              |
 
+### Mastering Basic Incident Response
+
+A basic incident response (IR) process is essential for managing cybersecurity incidents like a malware outbreak. Below is a step-by-step guide using a hypothetical malware outbreak scenario, followed by a timeline diagram to illustrate the sequence of actions.
+
+### Step-by-Step Guide for Incident Response
+
+- **Containment**:
+  1. **Identify Affected Systems**: Detect infected devices (e.g., workstations showing unusual activity) using network monitoring tools like Wireshark.
+  2. **Isolate Systems**: Disconnect affected systems from the network to prevent spread, such as unplugging a compromised PC.
+  3. **Limit Damage**: Apply temporary patches or disable services (e.g., halt email servers) to minimize malware impact.
+
+- **Eradication**:
+  4. **Remove Malware**: Run antivirus scans (e.g., using Malwarebytes) to delete malicious files from infected systems.
+  5. **Patch Vulnerabilities**: Update software (e.g., apply Windows updates) to close exploited weaknesses.
+  6. **Verify Clean Systems**: Confirm eradication with a second scan and log review to ensure no remnants remain.
+
+- **Recovery**:
+  7. **Restore Systems**: Reconnect and restore data from clean backups (e.g., restore files from a pre-infection backup).
+  8. **Test Operations**: Validate system functionality (e.g., test email and file access) to ensure normal operation.
+  9. **Monitor and Report**: Continuously monitor for recurrence and document the incident (e.g., create a report for stakeholders) by 04:29 PM IST on Tuesday, September 23, 2025.
+
+#### Hypothetical Malware Outbreak Scenario
+A company detects a malware outbreak after employees report slow systems and encrypted files. The malware, likely ransomware, spread via a phishing email. The IR team follows the steps above, isolating 10 affected workstations, removing the malware with antivirus tools, patching unupdated software, and restoring data from backups taken last week.
+
+#### Incident Response Timeline
+
+```plaintext
+[00:00] Start: Malware Detected
+   |
+   v
+[00:15] Containment: Identify Affected Systems
+   |
+   v
+[00:30] Containment: Isolate Systems
+   |
+   v
+[01:00] Containment: Limit Damage
+   |
+   v
+[02:00] Eradication: Remove Malware
+   |
+   v
+[02:30] Eradication: Patch Vulnerabilities
+   |
+   v
+[03:00] Eradication: Verify Clean Systems
+   |
+   v
+[04:00] Recovery: Restore Systems
+   |
+   v
+[04:30] Recovery: Test Operations
+   |
+   v
+[05:00] Recovery: Monitor and Report
+   |
+   v
+[05:30] End: Incident Resolved
+```
+
+- **00:00**: Malware detection triggers response.
+- **00:15-01:00**: Containment actions isolate the threat.
+- **02:00-03:00**: Eradication removes and secures systems.
+- **04:00-05:00**: Recovery restores and monitors operations.
