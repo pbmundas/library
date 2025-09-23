@@ -50,4 +50,4 @@ Parsed the CSV: 12 probes, 9 unique IPs (mostly EU/Asia), top UAs: Go-http-clien
 - **Detection**: GuardDuty for anomalous ListObjects; custom Lambda to alert on repeated anon probes (>2 in 5min).
 - **Pro Tip**: Use honeytokens in buckets (e.g., fake creds file) to track exfil. Baseline: <1 probe/day normal; >5 = alert. Chain to T1078.004 (cloud account abuse).
 
-Hypothesis **confirmed**—S3 bucket scanning campaign! These are low-effort probes for easy wins. In your SOC, IP grouping would flag clusters. Share a real CloudTrail snippet? On to Module 10: Scaling hunts with automation.
+Hypothesis **confirmed**—S3 bucket scanning campaign! These are low-effort probes for easy wins. In your SOC, IP grouping would flag clusters. 
