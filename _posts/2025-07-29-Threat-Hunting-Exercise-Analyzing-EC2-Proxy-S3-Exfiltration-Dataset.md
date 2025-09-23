@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Hunting Exercise - 8
-category: Threat Hunting  # This becomes a main topic in sidebar
+category: Threat-Hunting  # This becomes a main topic in sidebar
 ---
 
 ### Threat Hunting Exercise: Analyzing EC2 Proxy S3 Exfiltration Dataset
