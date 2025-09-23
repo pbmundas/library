@@ -33,3 +33,39 @@ The CIA triad—**Confidentiality**, **Integrity**, and **Availability**—is th
 |                     |
 +---------------------+
 ```
+
+### Exploring the Threat Landscape
+
+The threat landscape encompasses diverse actors with distinct motives and methods, posing significant cybersecurity challenges.
+
+- **Cybercrime**: Driven by financial gain, cybercrime involves illegal activities like theft or extortion. Example: The 2021 Colonial Pipeline ransomware attack by DarkSide, where a $4.4 million ransom was paid after a crippling oil supply disruption.
+- **Nation-State Actors**: Backed by governments, these actors target strategic assets for espionage or disruption. Example: The 2020 SolarWinds attack, attributed to Russia, compromised U.S. agencies by injecting malware into software updates.
+- **Hacktivists**: Motivated by ideology, hacktivists disrupt systems to promote causes. Example: Anonymous’s 2016 DDoS attack on the Turkish government websites to protest censorship.
+
+#### Infographic Description
+The infographic illustrates the relationships between these threats and their targets:
+- **Cybercrime** targets financial institutions and businesses (e.g., banks, retailers) with arrows pointing to money symbols.
+- **Nation-State Actors** target government and critical infrastructure (e.g., defense, energy) with arrows to shield and power icons.
+- **Hacktivists** target organizations or governments opposing their causes (e.g., media, political sites) with arrows to megaphone symbols.
+- Central node labeled "Internet" connects all threats, showing their shared digital battleground.
+
+#### Threat Landscape Infographic
+
+```plaintext
+       +-----------+
+       |  Internet |
+       +-----------+
+            |
+            |-----------------+-----------------+-----------------
+            |                 |                 |                
++-----------+         +-----------+         +-----------+
+| Cybercrime |        | Nation-State|        | Hacktivists|
+| (Money 💰) |        | (Shield 🛡️)|        | (Megaphone 📣)|
++-----------+         +-----------+         +-----------+
+    |                     |                     |
+    +--> Banks, Retail    +--> Gov, Energy      +--> Media, Gov
+```
+
+- **Cybercrime**: Targets financial gain (e.g., ransomware on businesses).
+- **Nation-State Actors**: Focus on espionage/disruption (e.g., critical infrastructure).
+- **Hacktivists**: Aim for ideological impact (e.g., protest sites).
