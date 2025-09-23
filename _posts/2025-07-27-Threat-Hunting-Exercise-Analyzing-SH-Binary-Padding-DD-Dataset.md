@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Hunting Exercise - 6
-category: Threat Hunting  # This becomes a main topic in sidebar
+category: Threat-Hunting  # This becomes a main topic in sidebar
 ---
 
 
