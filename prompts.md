@@ -2,7 +2,7 @@
 
 #### Prompt 1: Understanding Core Cybersecurity Concepts (CIA Triad)
 - **Topic**: Core cybersecurity concepts (confidentiality, integrity, availability - CIA triad)
-- **Prompt**: Create a concise explanation of the CIA triad (confidentiality, integrity, availability) with real-world examples (e.g., a data leak affecting confidentiality). Include a self-explanatory diagram illustrating how each component protects a system, and provide a scenario where a breach impacts one principle.
+- **Prompt**: Create a concise explanation of the CIA triad (confidentiality, integrity, availability) with real-world examples for each (e.g., a data leak affecting confidentiality). Include a self-explanatory diagram illustrating how each component protects a system, and provide scenarios where each breach impacts each principle.
 
 #### Prompt 2: Exploring the Threat Landscape
 - **Topic**: Threat landscape (cybercrime, nation-state actors, hacktivists)
