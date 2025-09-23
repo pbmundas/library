@@ -15,12 +15,12 @@
       background: #f4f4f4;
     }
     .offcanvas {
-      background: #333; /* Dark gray from your image */
+      background: #333;
       color: #fff;
-      width: 300px !important; /* Fixed width on desktop/mobile when shown */
+      width: 300px !important;
     }
     .offcanvas .logo img {
-      width: 80px; /* Adjust based on your logo size */
+      width: 80px;
       height: auto;
       margin-bottom: 10px;
     }
@@ -55,7 +55,7 @@
       padding: 20px;
       transition: margin-left 0.3s ease;
     }
-    /* Desktop: Sidebar always visible, no offcanvas behavior */
+    /* Desktop: Sidebar always visible */
     @media (min-width: 769px) {
       .offcanvas.offcanvas-start {
         position: fixed !important;
@@ -64,44 +64,49 @@
         z-index: 1045;
         width: 300px !important;
         visibility: visible !important;
-        background: #333;
         transform: none !important;
         border-right: 1px solid #dee2e6;
         padding: 20px;
         overflow-y: auto;
       }
       .main-content {
-        margin-left: 300px; /* Adjusts for always-visible sidebar */
+        margin-left: 300px;
       }
       .offcanvas-backdrop {
-        display: none !important; /* No overlay on desktop */
+        display: none !important;
       }
-      .sidebar-toggle {
-        display: none !important; /* Hide toggle on desktop */
+      .btn-toggle {
+        display: none !important;
       }
     }
-    /* Mobile: Use Offcanvas for toggle */
+    /* Mobile: Toggle button and Offcanvas */
     @media (max-width: 768px) {
       .main-content {
-        margin-left: 0; /* Full width on mobile */
+        margin-left: 0;
+        width: 100%;
       }
-      .sidebar-toggle {
+      .btn-toggle {
+        display: block !important;
         position: fixed;
         top: 10px;
         left: 10px;
         z-index: 1050;
-        background: #007bff; /* Blue button color */
+        background: #007bff;
         color: white;
         border: none;
-        padding: 10px;
+        padding: 10px 15px;
         border-radius: 5px;
         cursor: pointer;
+        font-size: 18px;
+      }
+      .btn-toggle:hover {
+        background: #0056b3;
       }
     }
   </style>
 </head>
 <body>
-  <button class="sidebar-toggle btn btn-primary d-none d-md-block d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebarOffcanvas" aria-controls="sidebarOffcanvas">☰</button>
+  <button class="btn-toggle btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebarOffcanvas" aria-controls="sidebarOffcanvas">☰</button>
   <div class="offcanvas offcanvas-start" tabindex="-1" id="sidebarOffcanvas" aria-labelledby="sidebarOffcanvasLabel">
     <div class="offcanvas-header">
       <h5 class="offcanvas-title" id="sidebarOffcanvasLabel">Library</h5>
@@ -115,7 +120,6 @@
     {{ content }}
   </div>
   <script>
-    // Lunr search index (runs after DOM loads)
     document.addEventListener('DOMContentLoaded', function() {
       var index = lunr(function () {
         this.ref('url');
@@ -130,22 +134,22 @@
       });
       var searchInput = document.querySelector('.offcanvas input[type="text"]');
       if (searchInput) {
+        let resultsUl = document.getElementById('search-results');
+        if (!resultsUl) {
+          resultsUl = document.createElement('ul');
+          resultsUl.id = 'search-results';
+          resultsUl.style.cssText = 'list-style: none; padding: 0; margin: 5px 0;';
+          searchInput.parentNode.appendChild(resultsUl);
+        }
         searchInput.addEventListener('input', function () {
-          var query = this.value;
-          var results = index.search(query);
-          var ul = document.getElementById('search-results');
-          if (!ul) {
-            ul = document.createElement('ul');
-            ul.id = 'search-results';
-            ul.style.listStyle = 'none';
-            ul.style.padding = '0';
-            this.parentNode.appendChild(ul);
-          }
-          ul.innerHTML = '';
+          const query = this.value;
+          resultsUl.innerHTML = '';
+          if (query.length < 2) return;
+          const results = index.search(query);
           results.forEach(function (result) {
-            var li = document.createElement('li');
-            li.innerHTML = '<a href="' + result.ref + '">' + result.ref + '</a>';
-            ul.appendChild(li);
+            const li = document.createElement('li');
+            li.innerHTML = `<a href="${result.ref}" style="color: #ddd; text-decoration: none;">${result.ref}</a>`;
+            resultsUl.appendChild(li);
           });
         });
       }
