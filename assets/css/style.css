@@ -94,7 +94,7 @@ body {
 
 /* Main content area: Centered layout */
 main {
-  margin-left: 420px; /* Offset for sidebar */
+  margin-left: 470px; /* Offset for sidebar */
   padding: 40px 20px;
   max-width: 800px; /* Readable width, centered */
   margin-right: auto; /* Center the content */
