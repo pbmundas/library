@@ -69,3 +69,63 @@ The infographic illustrates the relationships between these threats and their ta
 - **Cybercrime**: Targets financial gain (e.g., ransomware on businesses).
 - **Nation-State Actors**: Focus on espionage/disruption (e.g., critical infrastructure).
 - **Hacktivists**: Aim for ideological impact (e.g., protest sites).
+
+### Identifying Common Attack Vectors
+
+Recognizing common attack vectors is crucial for maintaining cybersecurity. Here’s a guide on three prevalent types—**phishing**, **malware**, and **social engineering**—with practical examples to help you identify and mitigate them.
+
+- **Phishing**: Fraudulent attempts to steal sensitive information, often via email or fake websites. Example: A phishing email pretending to be from your bank, asking you to click a link and enter login credentials, which leads to a counterfeit site harvesting your data.
+- **Malware**: Malicious software designed to damage or gain unauthorized access. Example: Downloading a file attachment from an unverified email that installs ransomware, locking your files and demanding payment.
+- **Social Engineering**: Manipulating individuals to divulge confidential information. Example: A caller posing as IT support, convincing you to provide your password under the guise of troubleshooting.
+
+#### Flowchart for Phishing Attack
+The flowchart below outlines the steps of a phishing attack, enhancing understanding of the process.
+
+#### Phishing Attack Flowchart
+
+```plaintext
+[Start]
+   |
+   v
+[Attacker Crafts Fake Email] --> [Email Sent to Target]
+   |                                 |
+   v                                 v
+[Target Receives Email] --> [Target Clicks Malicious Link]
+   |                                 |
+   v                                 v
+[Target Enters Credentials] --> [Data Sent to Attacker]
+   |                                 |
+   v                                 v
+[Account Compromised] --> [End]
+```
+
+- **Attacker Crafts Fake Email**: Creates a convincing message (e.g., urgent bank alert).
+- **Email Sent to Target**: Delivered to inboxes, often in bulk.
+- **Target Receives Email**: User sees the message.
+- **Target Clicks Malicious Link**: Leads to a fake login page.
+- **Target Enters Credentials**: Inputs sensitive data.
+- **Data Sent to Attacker**: Credentials are captured.
+- **Account Compromised**: Attacker gains access.
+
+
+To protect against these, verify email senders, avoid suspicious downloads, and be cautious of unsolicited requests for information.
+
+### Applying Risk Management Principles
+
+The process of managing cybersecurity risks involves three key steps: **identifying**, **assessing**, and **mitigating**. This structured approach helps organizations protect their systems and data effectively.
+
+- **Identifying Risks**: This step involves detecting potential threats and vulnerabilities. For example, monitoring network traffic might reveal unusual patterns indicating a malware presence.
+- **Assessing Risks**: Evaluate the likelihood and impact of identified risks. A risk assessment might determine that malware could lead to data loss with a high probability due to unpatched systems.
+- **Mitigating Risks**: Implement controls to reduce risk severity. This could include patching systems, deploying antivirus software, and training employees to recognize phishing.
+
+#### Case Study: Mitigating a Malware Risk
+A small business noticed slow network performance and frequent system crashes. Investigation identified a malware infection from a phishing email. The risk assessment rated it as "High" due to potential data theft and downtime. Mitigation involved isolating affected devices, updating antivirus definitions, patching vulnerabilities, and conducting staff training. Post-mitigation, the risk was reduced to "Low" with improved security measures.
+
+#### Risk Level Comparison Table
+
+| Risk Factor            | Before Mitigation | After Mitigation |
+|-------------------------|-------------------|------------------|
+| Likelihood of Attack    | High (80%)        | Low (20%)        |
+| Impact on Operations    | High (Data Loss)  | Low (Minimal)    |
+| Overall Risk Level      | High              | Low              |
+
