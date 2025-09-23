@@ -34,6 +34,9 @@ The CIA triad—**Confidentiality**, **Integrity**, and **Availability**—is th
 +---------------------+
 ```
 
+---
+
+
 ### Exploring the Threat Landscape
 
 The threat landscape encompasses diverse actors with distinct motives and methods, posing significant cybersecurity challenges.
@@ -69,6 +72,9 @@ The infographic illustrates the relationships between these threats and their ta
 - **Cybercrime**: Targets financial gain (e.g., ransomware on businesses).
 - **Nation-State Actors**: Focus on espionage/disruption (e.g., critical infrastructure).
 - **Hacktivists**: Aim for ideological impact (e.g., protest sites).
+
+---
+
 
 ### Identifying Common Attack Vectors
 
@@ -110,6 +116,9 @@ The flowchart below outlines the steps of a phishing attack, enhancing understan
 
 To protect against these, verify email senders, avoid suspicious downloads, and be cautious of unsolicited requests for information.
 
+---
+
+
 ### Applying Risk Management Principles
 
 The process of managing cybersecurity risks involves three key steps: **identifying**, **assessing**, and **mitigating**. This structured approach helps organizations protect their systems and data effectively.
@@ -128,6 +137,9 @@ A small business noticed slow network performance and frequent system crashes. I
 | Likelihood of Attack    | High (80%)        | Low (20%)        |
 | Impact on Operations    | High (Data Loss)  | Low (Minimal)    |
 | Overall Risk Level      | High              | Low              |
+
+---
+
 
 ### Mastering Basic Incident Response
 
@@ -152,6 +164,9 @@ A basic incident response (IR) process is essential for managing cybersecurity i
 
 #### Hypothetical Malware Outbreak Scenario
 A company detects a malware outbreak after employees report slow systems and encrypted files. The malware, likely ransomware, spread via a phishing email. The IR team follows the steps above, isolating 10 affected workstations, removing the malware with antivirus tools, patching unupdated software, and restoring data from backups taken last week.
+
+---
+
 
 #### Incident Response Timeline
 
@@ -193,3 +208,6 @@ A company detects a malware outbreak after employees report slow systems and enc
 - **00:15-01:00**: Containment actions isolate the threat.
 - **02:00-03:00**: Eradication removes and secures systems.
 - **04:00-05:00**: Recovery restores and monitors operations.
+
+---
+
