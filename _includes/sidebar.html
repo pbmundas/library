@@ -4,7 +4,7 @@
     <div class="site-name"><a href="{{ site.baseurl }}/">Library</a></div>
   </div>
   <div class="search">
-    <input type="text" placeholder="Search...">
+    <input type="text" id="search-input" placeholder="Search...">
   </div>
   <ul>
     {% assign all_items = site.posts %}
@@ -17,7 +17,7 @@
         <details>
           <summary><strong>{{ category }}</strong></summary>
           <ul>
-            {% assign items_in_category = all_items | where: "category", category %}
+            {% assign items_in_category = all_items | where: "category", category | sort: 'date' %}
             {% for item in items_in_category %}
               <li><a href="{{ site.baseurl }}{{ item.url }}">{{ item.title }}</a></li>
             {% endfor %}
