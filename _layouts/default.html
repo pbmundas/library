@@ -12,160 +12,66 @@
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
-      background-color: #f8f9fa;
+      background: #f4f4f4;
     }
     .container-fluid {
       display: flex;
       min-height: 100vh;
     }
     .sidebar {
-      width: 280px;
-      background: #343a40;  /* Darker, professional background for catchy look */
-      color: white;
+      width: 300px; /* Matches your image's width */
+      background: #333; /* Dark gray from your image */
+      color: #fff;
       padding: 20px;
       overflow-y: auto;
-      transition: transform 0.3s ease-in-out;
+      transition: transform 0.3s ease;
       position: fixed;
       top: 0;
       bottom: 0;
       left: 0;
       z-index: 1000;
-      box-shadow: 2px 0 5px rgba(0,0,0,0.1);  /* Subtle shadow for depth */
-      border-right: 1px solid #dee2e6;
-    }
-    .sidebar .logo {
-      display: flex;
-      align-items: center;
-      margin-bottom: 20px;
     }
     .sidebar .logo img {
-      width: 50px;
+      width: 80px; /* Adjust based on your logo size */
       height: auto;
-      margin-right: 10px;
+      margin-bottom: 10px;
     }
     .sidebar .site-name a {
+      color: #fff;
       text-decoration: none;
-      color: white;
       font-size: 1.2em;
-      font-weight: bold;
     }
-    .sidebar .search {
-      margin-bottom: 20px;
-    }
-    .sidebar #search-input {
+    .sidebar input[type="text"] {
       width: 100%;
-      padding: 8px 12px;
-      border: 1px solid #ced4da;
-      border-radius: 4px;
-      background: white;
-      color: #333;
-    }
-    .sidebar #search-results {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      max-height: 200px;
-      overflow-y: auto;
-      background: #f8f9fa;
-      color: #333;
-      border-radius: 4px;
-    }
-    .sidebar #search-results li {
-      padding: 5px 10px;
-      border-bottom: 1px solid #dee2e6;
-    }
-    .sidebar #search-results li:last-child {
-      border-bottom: none;
-    }
-    .sidebar #search-results a {
-      color: #007bff;
-      text-decoration: none;
+      margin-bottom: 10px;
+      padding: 5px;
+      background: #444;
+      border: 1px solid #555;
+      color: #fff;
     }
     .sidebar ul {
       list-style: none;
       padding: 0;
     }
-    .sidebar li {
-      margin-bottom: 10px;
-    }
-    .sidebar details summary {
-      cursor: pointer;
-      padding: 8px;
-      background: rgba(255,255,255,0.1);
-      border-radius: 4px;
-      transition: background 0.2s;
-    }
-    .sidebar details summary:hover {
-      background: rgba(255,255,255,0.2);
-    }
-    .sidebar details[open] summary {
-      background: rgba(255,255,255,0.15);
-    }
-    .sidebar a {
-      color: #adb5bd;
+    .sidebar ul li a {
+      color: #ddd;
       text-decoration: none;
-      padding: 5px 0;
-      display: block;
-      transition: color 0.2s;
     }
-    .sidebar a:hover {
-      color: white;
+    .sidebar ul li a:hover {
+      color: #fff;
     }
     .main-content {
-      margin-left: 280px;
-      padding: 40px;
+      margin-left: 300px; /* Matches sidebar width */
+      padding: 20px;
       flex-grow: 1;
-      width: calc(100% - 280px);
-      background: white;
-      min-height: 100vh;
-    }
-    .sidebar-toggle {
-      display: none;
-      position: fixed;
-      top: 15px;
-      left: 15px;
-      z-index: 1100;
-      background: #007bff;
-      color: white;
-      border: none;
-      padding: 10px 12px;
-      border-radius: 4px;
-      font-size: 1.2em;
-      cursor: pointer;
-      transition: background 0.2s;
-    }
-    .sidebar-toggle:hover {
-      background: #0056b3;
-    }
-    .overlay {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.5);
-      z-index: 999;
-    }
-    .overlay.active {
-      display: block;
-    }
-    /* Tablet adjustments */
-    @media (max-width: 992px) and (min-width: 769px) {
-      .sidebar {
-        width: 250px;
-      }
-      .main-content {
-        margin-left: 250px;
-        width: calc(100% - 250px);
-        padding: 30px;
-      }
+      width: calc(100% - 300px);
+      transition: margin-left 0.3s ease;
     }
     /* Mobile adjustments */
     @media (max-width: 768px) {
       .sidebar {
-        width: 200px;
         transform: translateX(-100%);
+        width: 250px; /* Slightly narrower on mobile */
       }
       .sidebar.active {
         transform: translateX(0);
@@ -173,80 +79,69 @@
       .main-content {
         margin-left: 0;
         width: 100%;
-        padding: 20px;
       }
       .sidebar-toggle {
         display: block;
-      }
-      .overlay {
-        display: none;  /* Starts hidden */
+        position: fixed;
+        top: 10px;
+        left: 10px;
+        z-index: 1100;
+        background: #007bff; /* Blue button color */
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        border-radius: 5px;
+        cursor: pointer;
       }
     }
-    /* Ensure visibility on very small screens */
-    @media (max-width: 480px) {
-      .main-content {
-        padding: 15px;
-      }
-      .sidebar {
-        width: 180px;
+    @media (min-width: 769px) {
+      .sidebar-toggle {
+        display: none;
       }
     }
   </style>
 </head>
 <body>
   <button class="sidebar-toggle" onclick="toggleSidebar()">☰</button>
-  <div class="overlay" onclick="closeSidebar()"></div>
   <div class="container-fluid">
     <nav class="sidebar" id="sidebar">
       {% include sidebar.html %}
-      <ul id="search-results"></ul>  <!-- Dynamic search results here -->
     </nav>
-    <main class="main-content">
+    <div class="main-content">
       {{ content }}
-    </main>
+    </div>
   </div>
   <script>
     function toggleSidebar() {
       const sidebar = document.getElementById('sidebar');
-      const overlay = document.querySelector('.overlay');
       sidebar.classList.toggle('active');
-      overlay.classList.toggle('active');
     }
-    function closeSidebar() {
-      const sidebar = document.getElementById('sidebar');
-      const overlay = document.querySelector('.overlay');
-      sidebar.classList.remove('active');
-      overlay.classList.remove('active');
-    }
-    // Lunr search index setup
+    // Lunr search index
     var index = lunr(function () {
       this.ref('url');
       this.field('title');
       this.field('content');
       {% for post in site.posts %}
-        this.add({ url: '{{ site.baseurl }}{{ post.url }}', title: '{{ post.title }}', content: '{{ post.content | strip_html | escape }}' });
+        this.add({ url: '{{ site.baseurl }}{{ post.url }}', title: '{{ post.title }}', content: '{{ post.content | strip_html }}' });
       {% endfor %}
       {% for doc in site.docs %}
-        this.add({ url: '{{ site.baseurl }}{{ doc.url }}', title: '{{ doc.title }}', content: '{{ doc.content | strip_html | escape }}' });
+        this.add({ url: '{{ site.baseurl }}{{ doc.url }}', title: '{{ doc.title }}', content: '{{ doc.content | strip_html }}' });
       {% endfor %}
     });
-    // Search functionality
-    document.addEventListener('DOMContentLoaded', function() {
-      const searchInput = document.getElementById('search-input');
-      const searchResults = document.getElementById('search-results');
-      if (searchInput && searchResults) {
-        searchInput.addEventListener('input', function () {
-          const query = this.value;
-          searchResults.innerHTML = '';
-          if (query.length < 2) return;
-          const results = index.search(query);
-          results.forEach(function (result) {
-            const li = document.createElement('li');
-            li.innerHTML = '<a href="' + result.ref + '">' + result.ref + '</a>';
-            searchResults.appendChild(li);
-          });
-        });
-      }
+    document.querySelector('.sidebar input[type="text"]').addEventListener('input', function () {
+      var query = this.value;
+      var results = index.search(query);
+      var ul = document.createElement('ul');
+      ul.id = 'search-results';
+      ul.style.listStyle = 'none';
+      ul.style.padding = '0';
+      document.querySelector('.sidebar').appendChild(ul);
+      ul.innerHTML = '';
+      results.forEach(function (result) {
+        var li = document.createElement('li');
+        li.innerHTML = '<a href="' + result.ref + '">' + result.ref + '</a>';
+        ul.appendChild(li);
+      });
     });
   </script>
 </body>
