@@ -31,4 +31,4 @@ Now, here's the **Table of Contents** for our "Pro Threat Hunter Bootcamp." It's
 | **9** | Case Studies and Real-World Hunts | - Breakdowns: SolarWinds, Colonial Pipeline<br>- Your SOC tie-in: Hunt similar patterns in enterprise data<br>- Reporting: Hunt stories, visualizations (e.g., timelines in Tableau) | Analyze failures/successes; communicate findings | Dissect a red team report: Re-hunt the engagement as blue team. |
 | **10** | Pro Level: Scaling and Sustainability | - Team hunting (roles: lead, analyst)<br>- Metrics (e.g., hunts per quarter, findings value)<br>- Continuous improvement: CTFs, certifications (SANS FOR578)<br>- Future trends: AI-assisted hunting, zero-trust integration | Lead hunts; stay current | Capstone: Design/end-to-end hunt for a fictional org, present findings. |
 
-By the end, you'll be running hunts that uncover threats your SOC might miss. Ready to dive into Module 1? Share a recent log analysis example from your work, and we'll hunt it together!
+By the end, you'll be running hunts that uncover threats your SOC might miss. Ready to dive into Module 1?  we'll hunt it together!
