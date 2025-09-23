@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Hunting Exercise - 12
-category: Threat Hunting  # This becomes a main topic in sidebar
+category: Threat-Hunting  # This becomes a main topic in sidebar
 ---
 
 ### Threat Hunting Exercise: Analyzing Covenant SC Query DCERPC SMB SVCCTL Dataset
