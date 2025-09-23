@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Solarwind SUNBURST - Hunting
+title: Solarwind SUNBURST
 category: Threat Hunting  # This becomes a main topic in sidebar
 ---
 
