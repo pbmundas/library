@@ -1,0 +1,42 @@
+name: Generate Threat Hunting Content per Technique
+
+on:
+  schedule:
+    - cron: '0 0 * * 1'  # Weekly on Monday at midnight UTC
+  workflow_dispatch:  # Manual trigger
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout library repo
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: Install dependencies
+        run: pip install requests pyyaml
+
+      - name: Clone hunting-master and Parse TTPS.md
+        run: |
+          git clone https://github.com/pbmundas/hunting-master.git
+          python parse_ttps.py
+
+      - name: Generate Content via Grok API
+        env:
+          GROK_API_KEY: ${{ secrets.GROK_API_KEY }}
+        run: |
+          python generate_content.py
+
+      - name: Commit and Push Changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add _posts/
+          git diff --staged --quiet || git commit -m "Auto-generate threat hunting content for ATT&CK techniques"
+          git push
