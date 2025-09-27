@@ -1,7 +1,7 @@
 import re
 import yaml
 
-# Predefined mapping of technique names to IDs (partial, based on TTPS.md)
+# Predefined mapping of technique names to IDs
 TECHNIQUE_ID_MAP = {
     "ARP Cache Poisoning": "T1557.002",
     "Adversary-in-the-Middle": "T1557",
@@ -29,7 +29,6 @@ TECHNIQUE_ID_MAP = {
     "Email Forwarding Rule": "T1114.003",
     "Evil Twin": "T1557.004",
     "GUI Input Capture": "T1056.002",
-    # Add more mappings as needed
 }
 
 try:
@@ -39,15 +38,33 @@ except FileNotFoundError:
     print("Error: TTPS.md not found in hunting-master")
     exit(1)
 
-# Extract tactics (e.g., ## collection)
+# Extract tactics
 tactics = re.findall(r'## ([a-z\-]+)(?!\s*\()', content)
 if not tactics:
     print("Error: No tactics found in TTPS.md")
     exit(1)
 
+# Map tactic names to MITRE ATT&CK IDs
+TACTIC_ID_MAP = {
+    "reconnaissance": "TA0001",
+    "resource-development": "TA0002",
+    "initial-access": "TA0003",
+    "execution": "TA0004",
+    "persistence": "TA0005",
+    "privilege-escalation": "TA0006",
+    "defense-evasion": "TA0007",
+    "credential-access": "TA0008",
+    "collection": "TA0009",
+    "command-and-control": "TA0011",
+    "exfiltration": "TA0010",
+    "impact": "TA0040",
+    "discovery": "TA0007",
+    "lateral-movement": "TA0008"
+}
+
 techniques = {}
 for tactic_name in tactics:
-    tactic_id = f"TA{tactic_name[:4].upper()}"  # Generate dummy TAxxxx ID (replace with actual IDs if available)
+    tactic_id = TACTIC_ID_MAP.get(tactic_name, f"TA{tactic_name[:4].upper()}")
     pattern = rf'## {re.escape(tactic_name)}.*?$(.*?)(?=(## |\Z))'
     tactic_content = re.search(pattern, content, re.DOTALL | re.MULTILINE)
     if tactic_content:
