@@ -46,4 +46,3 @@ jobs:
           git diff --staged --quiet || git commit -m "Auto-generate threat hunting content for ATT&CK tactic $(date +%Y-%m-%d)"
           git push
         continue-on-error: true  # Continue if no changes to commit
-```
