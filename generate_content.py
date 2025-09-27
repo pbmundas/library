@@ -1,4 +1,3 @@
-```python
 import yaml
 import requests
 import os
@@ -73,4 +72,3 @@ else:
 
 # Rate limiting
 time.sleep(5)
-```
