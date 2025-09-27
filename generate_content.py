@@ -1,12 +1,32 @@
 import yaml
 import requests
 import os
+import re
 from datetime import datetime
 import time
 
 API_KEY = os.getenv('GROK_API_KEY')
 API_URL = 'https://api.x.ai/v1/chat/completions'
 SELECTED_TACTIC = os.getenv('TACTIC_ID', '')
+FORCE_GENERATE = os.getenv('FORCE_GENERATE', 'false').lower() == 'true'
+
+# Map tactic names to MITRE ATT&CK IDs
+TACTIC_ID_MAP = {
+    "reconnaissance": "TA0001",
+    "resource-development": "TA0002",
+    "initial-access": "TA0003",
+    "execution": "TA0004",
+    "persistence": "TA0005",
+    "privilege-escalation": "TA0006",
+    "defense-evasion": "TA0007",
+    "credential-access": "TA0008",
+    "collection": "TA0009",
+    "command-and-control": "TA0011",
+    "exfiltration": "TA0010",
+    "impact": "TA0040",
+    "discovery": "TA0007",  # Note: Also mapped to defense-evasion; verify usage
+    "lateral-movement": "TA0008"  # Note: Also mapped to credential-access; verify usage
+}
 
 try:
     with open('techniques.yaml', 'r') as f:
@@ -21,7 +41,7 @@ if not techniques:
 
 existing_files = os.listdir('_posts')
 print(f"Existing files in _posts: {existing_files}")
-tactic_ids = [tid for tid in techniques.keys() if not any(f'-{tid.lower()}.md' in f for f in existing_files)]
+tactic_ids = [tid for tid in techniques.keys() if FORCE_GENERATE or not any(f'-{tid.lower()}.md' in f for f in existing_files)]
 
 if SELECTED_TACTIC and SELECTED_TACTIC in techniques:
     tactic_ids = [SELECTED_TACTIC]
@@ -30,10 +50,9 @@ elif not tactic_ids:
     exit(0)
 
 tactic_id = tactic_ids[0]
-try:
-    tactic_name = next(t for t in re.findall(r'## ([a-z\-]+)(?!\s*\()', open('hunting-master/TTPS.md').read(), re.MULTILINE) if f"TA{t[:4].upper()}" == tactic_id)
-except StopIteration:
-    print(f"Error: Tactic {tactic_id} not found in TTPS.md")
+tactic_name = next((name for name, tid in TACTIC_ID_MAP.items() if tid == tactic_id), None)
+if not tactic_name:
+    print(f"Error: Tactic ID {tactic_id} not mapped to a name")
     exit(1)
 
 tech_list = techniques[tactic_id]
