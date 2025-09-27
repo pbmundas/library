@@ -1,8 +1,37 @@
-
 import re
 import yaml
 
-# Read TTPS.md
+# Predefined mapping of technique names to IDs (partial, based on TTPS.md)
+TECHNIQUE_ID_MAP = {
+    "ARP Cache Poisoning": "T1557.002",
+    "Adversary-in-the-Middle": "T1557",
+    "Archive Collected Data": "T1560",
+    "Archive via Custom Method": "T1560.003",
+    "Archive via Library": "T1560.002",
+    "Archive via Utility": "T1560.001",
+    "Audio Capture": "T1123",
+    "Automated Collection": "T1119",
+    "Browser Session Hijacking": "T1185",
+    "Clipboard Data": "T1115",
+    "Code Repositories": "T1213.003",
+    "Confluence": "T1213.001",
+    "Credential API Hooking": "T1056.004",
+    "Customer Relationship Management Software": "T1213",
+    "DHCP Spoofing": "T1557.003",
+    "Data Staged": "T1074",
+    "Data from Cloud Storage": "T1530",
+    "Data from Configuration Repository": "T1602",
+    "Data from Information Repositories": "T1213",
+    "Data from Local System": "T1005",
+    "Data from Network Shared Drive": "T1039",
+    "Data from Removable Media": "T1025",
+    "Email Collection": "T1114",
+    "Email Forwarding Rule": "T1114.003",
+    "Evil Twin": "T1557.004",
+    "GUI Input Capture": "T1056.002",
+    # Add more mappings as needed
+}
+
 try:
     with open('hunting-master/TTPS.md', 'r') as f:
         content = f.read()
@@ -10,21 +39,31 @@ except FileNotFoundError:
     print("Error: TTPS.md not found in hunting-master")
     exit(1)
 
-# Extract tactics (e.g., ## Command and Control (TA0011))
-tactics = re.findall(r'## ([\w\s]+) \((TA\d+)\)', content)
+# Extract tactics (e.g., ## collection)
+tactics = re.findall(r'## ([a-z\-]+)(?!\s*\()', content)
+if not tactics:
+    print("Error: No tactics found in TTPS.md")
+    exit(1)
 
-# Extract techniques/sub-techniques
 techniques = {}
-for tactic_name, tactic_id in tactics:
-    pattern = rf'## {re.escape(tactic_name)} \({tactic_id}\).*?(?=## |$)(.*?)(?=(## |\Z))'
-    tactic_content = re.search(pattern, content, re.DOTALL)
+for tactic_name in tactics:
+    tactic_id = f"TA{tactic_name[:4].upper()}"  # Generate dummy TAxxxx ID (replace with actual IDs if available)
+    pattern = rf'## {re.escape(tactic_name)}.*?$(.*?)(?=(## |\Z))'
+    tactic_content = re.search(pattern, content, re.DOTALL | re.MULTILINE)
     if tactic_content:
-        tech_list = re.findall(r'### ([\w\s:]+) \((T\d+(?:\.\d+)?)\)', tactic_content.group(1))
-        techniques[tactic_id] = [{'name': tech_name.strip(), 'id': tech_id} for tech_name, tech_id in tech_list]
+        tech_list = re.findall(r'###\s+—\s+([\w\s:]+?)(?=\n|$)', tactic_content.group(1), re.DOTALL)
+        techniques[tactic_id] = [
+            {'name': tech_name.strip(), 'id': TECHNIQUE_ID_MAP.get(tech_name.strip(), 'T0000')} 
+            for tech_name in tech_list if tech_name.strip()
+        ]
+    else:
+        print(f"Warning: No techniques found for tactic {tactic_name} ({tactic_id})")
 
-# Save to YAML
+if not techniques:
+    print("Error: No techniques parsed from TTPS.md")
+    exit(1)
+
 with open('techniques.yaml', 'w') as f:
     yaml.dump(techniques, f)
 
-print("Parsed techniques to techniques.yaml")
-
+print(f"Parsed {len(tactics)} tactics with {sum(len(techs) for techs in techniques.values())} techniques to techniques.yaml")
