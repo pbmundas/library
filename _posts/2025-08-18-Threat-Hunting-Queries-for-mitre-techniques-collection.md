@@ -5,7 +5,8 @@ category: Hunting-Queries  # This becomes a main topic in sidebar
 ---
 
 ## Collection
-### ARP Cache Poisoning (MITRE ATT&CK T1557.002)
+
+### ARP Cache Poisoning
 
 | Hypothesis | Description | Data Sources | Hunting Queries |
 |------------|-------------|--------------|-----------------|
@@ -65,8 +66,6 @@ category: Hunting-Queries  # This becomes a main topic in sidebar
 
 ### Archive via Custom Method
 
-### Threat Hunting Hypotheses for Archive via Custom Method (MITRE ATT&CK T1560.003)
-
 Archive via Custom Method involves adversaries using bespoke techniques, such as XOR encryption or stream ciphers without external libraries, to compress or encrypt collected data before exfiltration. This sub-technique is prevalent in advanced persistent threats (APTs) like those observed in groups such as Hromcova or CopyKittens, where custom implementation evades standard utility detection. Hypotheses are tailored to environments with deep endpoint visibility (e.g., EDR), assuming moderate log sources; in low-visibility setups, focus on behavioral anomalies. I've generated 15 high-quality hypotheses, emphasizing custom scripting, in-memory operations, and post-archival indicators across Windows, Linux, and cloud.
 
 | Hypothesis | Description | Data Sources | Hunting Queries |
@@ -90,8 +89,6 @@ Archive via Custom Method involves adversaries using bespoke techniques, such as
 
 ### Archive via Library
 
-### Threat Hunting Hypotheses for Archive Collected Data: Archive via Library (MITRE ATT&CK T1560.002)
-
 Adversaries may compress or encrypt collected data using third-party libraries like zlib, libzip, or aPLib before exfiltration, often to obfuscate content and evade detection. This technique is observed across platforms (Windows, Linux, macOS) and in malware such as InvisiMole (using zlib for compression), FoggyWeb (invoking GZipStream), and Lazarus Group tools (zlib compression for victim data). Detections can focus on library loads, API calls, and correlated file behaviors; in low-visibility environments, prioritize endpoint telemetry for anomalies like high-entropy outputs.
 
 | Hypothesis | Description | Data Sources | Hunting Queries |
@@ -114,8 +111,6 @@ Adversaries may compress or encrypt collected data using third-party libraries l
 
 
 ### Archive via Utility
-
-### Threat Hunting Hypotheses for Archive Collected Data: Archive via Utility (MITRE ATT&CK T1560.001)
 
 Adversaries may use utilities to compress and/or encrypt collected data prior to exfiltration, often abusing pre-installed tools like `tar` on Linux/macOS, `zip` on Windows, or third-party utilities such as 7-Zip, WinRAR, and WinZip. This technique has been observed in various threat actors, including Agrius using 7-Zip, Akira employing WinRAR, APT1 with RAR, and APT28 using password-protected WinRAR archives. Detection focuses on command-line executions, file creations, and behavioral correlations across Windows, Linux, and cloud environments, assuming moderate telemetry like EDR/Sysmon.
 
@@ -161,8 +156,6 @@ Adversaries may use utilities to compress and/or encrypt collected data prior to
 
 ### Automated Collection
 
-### Threat Hunting Hypotheses for Automated Collection (MITRE ATT&CK T1119)
-
 Once established within a system or network, adversaries may use automated techniques for collecting internal data, such as scripts to search and copy files based on criteria like type or name, or cloud APIs and ETL services for data aggregation. This technique is used by groups like APT1 with batch scripts for discovery and collection, or Agrius querying SQL databases. Hypotheses are designed for environments with EDR/SIEM visibility, focusing on script executions, file patterns, and API anomalies across Windows, Linux, and cloud. Detections can leverage process monitoring, file events, and cloud audits; in low-visibility setups, prioritize behavioral baselines.
 
 | Hypothesis | Description | Data Sources | Hunting Queries |
@@ -185,8 +178,6 @@ Once established within a system or network, adversaries may use automated techn
 
 
 ### Browser Session Hijacking
-
-### Threat Hunting Hypotheses for Browser Session Hijacking (MITRE ATT&CK T1185)
 
 Adversaries exploit browser vulnerabilities or functionality to intercept sessions, often by injecting code to steal cookies, tokens, or redirect traffic, enabling access to authenticated resources without credentials. This technique is commonly used in Windows environments by malware like Cobalt Strike for browser pivoting or Agent Tesla for form-grabbing. Hypotheses focus on injection indicators, anomalous browser behaviors, and session artifacts, assuming EDR/SIEM visibility (e.g., Sysmon, browser logs). In low-visibility setups, prioritize process and network monitoring; detections may overlap with techniques like Process Injection (T1055).
 
@@ -252,8 +243,6 @@ Adversaries exploit browser vulnerabilities or functionality to intercept sessio
 
 
 ### Confluence
-
-# Threat Hunting Hypotheses for Confluence (T1213.001)
 
 | Hypothesis | Description | Data Sources | Hunting Queries |
 |------------|-------------|--------------|-----------------|
