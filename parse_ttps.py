@@ -1,4 +1,4 @@
-```python
+
 import re
 import yaml
 
@@ -27,4 +27,4 @@ with open('techniques.yaml', 'w') as f:
     yaml.dump(techniques, f)
 
 print("Parsed techniques to techniques.yaml")
-```
+
