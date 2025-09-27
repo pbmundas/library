@@ -8,11 +8,10 @@ with open('hunting-master/TTPS.md', 'r') as f:
 # Extract tactics (e.g., ## Command and Control (TA0011))
 tactics = re.findall(r'## ([\w\s]+) \((TA\d+)\)', content)
 
-# Extract techniques/sub-techniques (e.g., ### Application Layer Protocol: Web Protocols (T1071.001))
+# Extract techniques/sub-techniques
 techniques = {}
 for tactic_name, tactic_id in tactics:
-    # Find techniques under each tactic
-    pattern = rf'## {tactic_name} \({tactic_id}\).*?(?=## |$)(.*?)(?=(## |\Z))'
+    pattern = rf'## {re.escape(tactic_name)} \({tactic_id}\).*?(?=## |$)(.*?)(?=(## |\Z))'
     tactic_content = re.search(pattern, content, re.DOTALL)
     if tactic_content:
         tech_list = re.findall(r'### ([\w\s:]+) \((T\d+(?:\.\d+)?)\)', tactic_content.group(1))
