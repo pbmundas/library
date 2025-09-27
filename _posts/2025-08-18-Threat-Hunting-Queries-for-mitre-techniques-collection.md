@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Collection
-category: Hunting-Queries  # This becomes a main topic in sidebar
+category: Threat-Hunting-Queries  # This becomes a main topic in sidebar
 ---
 
 ## Collection
