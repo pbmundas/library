@@ -6,7 +6,7 @@ category: Threat-Hunting-Queries  # This becomes a main topic in sidebar
 
 ## Reconnaissance
 
-### T1595.001- Scanning IP Blocks
+### T1595.001: Scanning IP Blocks
 
 | Hypothesis | Description | Data Sources | Hunting Queries |
 |-----------|-------------|--------------|-----------------|
@@ -21,7 +21,7 @@ category: Threat-Hunting-Queries  # This becomes a main topic in sidebar
 | 9. IP Block Scanning with High Failure Rates | Scanning with high connection failure rates, indicating reconnaissance, as in APT41. | - Network Traffic (DS0003: Zeek Conn)<br>- Firewall Logs | - **Splunk**: `index=network sourcetype=zeek_conn conn_state="REJ" AND dest_port IN (80,443,3389) \| stats count by src_ip, dest_ip \| where count > 50`.<br>- **KQL**: `DeviceNetworkEvents \| where AdditionalFields.ConnectionState == "REJ" and RemotePort in (80, 443, 3389) \| summarize count() by DeviceIP, RemoteIP \| where count_ > 50`.<br>- **ELK**: `FROM logs-zeek.conn-* \| WHERE network.connection.state = 'REJ' AND destination.port IN [80, 443, 3389] \| STATS COUNT() BY source.ip, destination.ip HAVING COUNT() > 50`. |
 | 10. IP Block Scanning Targeting Internal Networks | Internal hosts scanning IP blocks, indicating compromised insider, as in FIN7. | - Network Traffic (DS0003: Zeek Conn)<br>- Endpoint Logs | - **Splunk**: `index=network sourcetype=zeek_conn src_ip IN (internal_ips) AND dest_ip IN (internal_ips) AND dest_port IN (80,443) \| stats count by src_ip, dest_ip \| where count > 50`.<br>- **KQL**: `DeviceNetworkEvents \| where DeviceIP in (internalIPs) and RemoteIP in (internalIPs) and RemotePort in (80, 443) \| summarize count() by DeviceIP, RemoteIP \| where count_ > 50`.<br>- **ELK**: `FROM logs-zeek.conn-* \| WHERE source.ip IN ['internal_ips'] AND destination.ip IN ['internal_ips'] AND destination.port IN [80, 443] \| STATS COUNT() BY source.ip, destination.ip HAVING COUNT() > 50`. |
 
-## T1595.002- Vulnerability Scanning
+## T1595.002: Vulnerability Scanning
 
 | Hypothesis | Description | Data Sources | Hunting Queries |
 |-----------|-------------|--------------|-----------------|
@@ -36,7 +36,7 @@ category: Threat-Hunting-Queries  # This becomes a main topic in sidebar
 | 9. Vulnerability Scanning with High Entropy Payloads | Scanning with high-entropy payloads, indicating exploit attempts, as in APT41. | - Network Traffic (DS0003: Zeek HTTP)<br>- Packet Analysis | - **Splunk**: `index=network sourcetype=zeek_http payload_entropy > 7 AND dest_port IN (80,443) \| stats count by src_ip, uri \| where count > 10`.<br>- **KQL**: `DeviceNetworkEvents \| where Protocol == "HTTP" and AdditionalFields.PayloadEntropy > 7 and RemotePort in (80, 443) \| summarize count() by DeviceIP, RemoteUrl \| where count_ > 10`.<br>- **ELK**: `FROM logs-zeek.http-* \| WHERE http.payload.entropy > 7 AND destination.port IN [80, 443] \| STATS COUNT() BY source.ip, http.uri HAVING COUNT() > 10`. |
 | 10. Vulnerability Scanning Targeting Internal Hosts | Internal hosts performing vulnerability scans, indicating compromise, as in FIN7. | - Network Traffic (DS0003: Zeek Conn)<br>- Endpoint Logs | - **Splunk**: `index=network sourcetype=zeek_conn src_ip IN (internal_ips) AND dest_port IN (445,1433) \| stats count by src_ip, dest_ip \| where count > 50`.<br>- **KQL**: `DeviceNetworkEvents \| where DeviceIP in (internalIPs) and RemotePort in (445, 1433) \| summarize count() by DeviceIP, RemoteIP \| where count_ > 50`.<br>- **ELK**: `FROM logs-zeek.conn-* \| WHERE source.ip IN ['internal_ips'] AND destination.port IN [445, 1433] \| STATS COUNT() BY source.ip, destination.ip HAVING COUNT() > 50`. |
 
-## T1595.003- Wordlist Scanning
+## T1595.003: Wordlist Scanning
 
 | Hypothesis | Description | Data Sources | Hunting Queries |
 |-----------|-------------|--------------|-----------------|
@@ -51,7 +51,7 @@ category: Threat-Hunting-Queries  # This becomes a main topic in sidebar
 | 9. Wordlist Scanning Targeting CMS Platforms | Scanning targeting CMS platforms (e.g., WordPress), as in APT29. | - Network Traffic (DS0003: Zeek HTTP)<br>- Web Server Logs | - **Splunk**: `index=network sourcetype=zeek_http uri IN ("*wp-admin*", "*drupal*") AND status_code=404 \| stats count by src_ip, uri \| where count > 50`.<br>- **KQL**: `DeviceNetworkEvents \| where Protocol == "HTTP" and RemoteUrl has_any ("wp-admin", "drupal") and AdditionalFields.StatusCode == 404 \| summarize count() by DeviceIP, RemoteUrl \| where count_ > 50`.<br>- **ELK**: `FROM logs-zeek.http-* \| WHERE http.uri : ("*wp-admin*" OR "*drupal*") AND http.status = 404 \| STATS COUNT() BY source.ip, http.uri HAVING COUNT() > 50`. |
 | 10. Wordlist Scanning with Anomalous Timing | Wordlist scanning outside business hours, as in 2025 trends. | - Network Traffic (DS0003: Zeek HTTP)<br>- Metrics | - **Splunk**: `index=network sourcetype=zeek_http uri IN ("*admin*", "*login*") \| timechart span=1h count by src_ip \| where count > avg(count)*3 AND (_time < "08:00" OR _time > "18:00")`.<br>- **KQL**: `DeviceNetworkEvents \| where Protocol == "HTTP" and RemoteUrl has_any ("admin", "login") \| summarize HourlyCount=count() by bin(Timestamp, 1h), DeviceIP \| where HourlyCount > avg(HourlyCount) * 3 and (hour(Timestamp) < 8 or hour(Timestamp) > 18)`.<br>- **ELK**: `FROM logs-zeek.http-* \| WHERE http.uri : ("*admin*" OR "*login*") \| STATS COUNT() BY date_histogram(@timestamp, '1h'), source.ip \| WHERE COUNT() > AVG(COUNT()) * 3 AND (HOUR(@timestamp) < 8 OR HOUR(@timestamp) > 18)`. |
 
-## T1595.004- Visual Reconnaissance
+## T1595.004: Visual Reconnaissance
 
 | Hypothesis | Description | Data Sources | Hunting Queries |
 |-----------|-------------|--------------|-----------------|
