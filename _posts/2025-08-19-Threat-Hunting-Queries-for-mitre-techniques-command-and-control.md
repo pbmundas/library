@@ -226,7 +226,7 @@ category: Threat-Hunting-Queries  # This becomes a main topic in sidebar
 | 14. Obfuscated Data with Encrypted Payloads | Encrypted payloads in obfuscated data, as in APT41. | - Network Traffic (DS0003: Zeek HTTP)<br>- Packet Analysis | - **Splunk**: `index=network sourcetype=zeek_http payload_entropy > 7 \| stats count by src_ip, uri \| where count > 5`.<br>- **KQL**: `DeviceNetworkEvents \| where Protocol == "HTTP" and AdditionalFields.PayloadEntropy > 7 \| summarize count() by DeviceIP, RemoteUrl \| where count_ > 5`.<br>- **ELK**: `FROM logs-zeek.http-* \| WHERE http.payload.entropy > 7 \| STATS COUNT() BY source.ip, http.uri HAVING COUNT() > 5`. |
 | 15. Obfuscated Data in Non-Standard Environments | Obfuscated data in Linux, as in Turla. | - Network Traffic (DS0003: Zeek HTTP)<br>- Linux Logs | - **Splunk**: `index=linux sourcetype=auditd syscall="sendto" AND dest_port IN (80, 443) AND exe NOT IN (known_apps) \| stats count by exe, dest_ip \| where count > 5`.<br>- **KQL**: `DeviceNetworkEvents \| where RemotePort in (80, 443) and InitiatingProcessName !in (knownApps) \| summarize count() by InitiatingProcessName, RemoteIP \| where count_ > 5`.<br>- **ELK**: `FROM logs-auditd-* \| WHERE syscall.name = "sendto" AND destination.port IN [80, 443] AND process.exe NOT IN ['known_apps'] \| STATS COUNT() BY process.exe, destination.ip HAVING COUNT() > 5`.
 
-## Dead Drop Resolver (T1102.003)
+### Dead Drop Resolver (T1102.003)
 
 | Hypothesis | Description | Data Sources | Hunting Queries |
 |------------|-------------|--------------|-----------------|
@@ -246,7 +246,7 @@ category: Threat-Hunting-Queries  # This becomes a main topic in sidebar
 | 14. Dead Drop Resolver with Suspicious Headers | Dead drop access with custom headers, as in Cobalt Strike. | - Network Traffic (DS0003: Zeek HTTP)<br>- Proxy Logs | - **Splunk**: `index=network sourcetype=zeek_http uri IN ("*pastebin.com*", "*gist.github.com*") AND header IN ("*X-Cobalt*", "*Custom-Header*") \| stats count by src_ip, header \| where count > 5`.<br>- **KQL**: `DeviceNetworkEvents \| where RemoteUrl has_any ("pastebin.com", "gist.github.com") and AdditionalFields.Header has_any ("X-Cobalt", "Custom-Header") \| summarize count() by DeviceIP, AdditionalFields.Header \| where count_ > 5`.<br>- **ELK**: `FROM logs-zeek.http-* \| WHERE http.uri : ("*pastebin.com*" OR "*gist.github.com*") AND http.header : ("*X-Cobalt*" OR "*Custom-Header*") \| STATS COUNT() BY source.ip, http.header HAVING COUNT() > 5`. |
 | 15. Dead Drop Resolver with Encrypted Payloads | Encrypted payloads retrieved from dead drop sites, as in APT41. | - Network Traffic (DS0003: Zeek HTTP)<br>- Packet Analysis | - **Splunk**: `index=network sourcetype=zeek_http uri IN ("*pastebin.com*", "*gist.github.com*") AND payload_entropy > 7 \| stats count by src_ip, uri \| where count > 5`.<br>- **KQL**: `DeviceNetworkEvents \| where RemoteUrl has_any ("pastebin.com", "gist.github.com") and AdditionalFields.PayloadEntropy > 7 \| summarize count() by DeviceIP, RemoteUrl \| where count_ > 5`.<br>- **ELK**: `FROM logs-zeek.http-* \| WHERE http.uri : ("*pastebin.com*" OR "*gist.github.com*") AND http.payload.entropy > 7 \| STATS COUNT() BY source.ip, http.uri HAVING COUNT() > 5`. |
 
-## Domain Fronting (T1090.004)
+### Domain Fronting (T1090.004)
 
 | Hypothesis | Description | Data Sources | Hunting Queries |
 |------------|-------------|--------------|-----------------|
@@ -266,7 +266,7 @@ category: Threat-Hunting-Queries  # This becomes a main topic in sidebar
 | 14. Domain Fronting with Suspicious Headers | Domain fronting with custom headers, as in Cobalt Strike. | - Network Traffic (DS0003: Zeek HTTP)<br>- Proxy Logs | - **Splunk**: `index=network sourcetype=zeek_http header IN ("*X-Cobalt*", "*Custom-Header*") \| stats count by src_ip, header \| where count > 5`.<br>- **KQL**: `DeviceNetworkEvents \| where Protocol == "HTTP" and AdditionalFields.Header has_any ("X-Cobalt", "Custom-Header") \| summarize count() by DeviceIP, AdditionalFields.Header \| where count_ > 5`.<br>- **ELK**: `FROM logs-zeek.http-* \| WHERE http.header : ("*X-Cobalt*" OR "*Custom-Header*") \| STATS COUNT() BY source.ip, http.header HAVING COUNT() > 5`. |
 | 15. Domain Fronting with Encrypted Payloads | Encrypted payloads in domain fronting, as in APT41. | - Network Traffic (DS0003: Zeek SSL)<br>- Packet Analysis | - **Splunk**: `index=network sourcetype=zeek_ssl payload_entropy > 7 \| stats count by src_ip, sni \| where count > 5`.<br>- **KQL**: `DeviceNetworkEvents \| where Protocol == "SSL" and AdditionalFields.PayloadEntropy > 7 \| summarize count() by DeviceIP, RemoteUrl \| where count_ > 5`.<br>- **ELK**: `FROM logs-zeek.ssl-* \| WHERE ssl.payload.entropy > 7 \| STATS COUNT() BY source.ip, ssl.sni HAVING COUNT() > 5`. |
 
-## Domain Generation Algorithms (T1568.002)
+### Domain Generation Algorithms (T1568.002)
 
 | Hypothesis | Description | Data Sources | Hunting Queries |
 |------------|-------------|--------------|-----------------|
